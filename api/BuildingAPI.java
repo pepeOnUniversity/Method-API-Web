@@ -1,11 +1,8 @@
 package com.javaweb.api;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.javaweb.beans.BuildingDTO;
 
 @RestController
 //@controller help program understand this is a RESTFUL API WEB SERVICE
@@ -42,14 +39,28 @@ public class BuildingAPI {
 //		System.out.println("done by DTO");
 //	}
 
-	@RequestMapping(value = "/api/building/", method = RequestMethod.GET)
-	public BuildingDTO getBuilding(@RequestParam(value = "name", required = false) String name,
-			@RequestParam(value = "size", required = false) String size,
-			@RequestParam(value = "floor", required = false) Integer floor) {
-		BuildingDTO response = new BuildingDTO();
-		response.setName(name);
-		response.setSize(size);
-		response.setFloor(floor);
-		return response;
+//	@RequestMapping(value = "/api/building/", method = RequestMethod.GET)
+//	public BuildingDTO getBuilding(@RequestParam(value = "name", required = false) String name,
+//			@RequestParam(value = "size", required = false) String size,
+//			@RequestParam(value = "floor", required = false) Integer floor) {
+//		BuildingDTO response = new BuildingDTO();
+//		response.setName(name);
+//		response.setSize(size);
+//		response.setFloor(floor);
+//		return response;
+//	}
+
+	// @PathVariable use to get value from URL and assign it for parameter of method
+	// in Controller
+	@DeleteMapping(value = "/api/building/{id}/{name}")
+	/*
+	 * if declear variable in @PathVariable has same name in URL => dont need
+	 * declear in @PathVariable (id)
+	 */
+	// if name of variable different from URL => must declear in @PathVariable
+	// (name)
+	public void deleteBuilding(@PathVariable Integer id, @PathVariable("name") String nameOfBuilding) {
+		System.out.println(id);
+		System.out.println(nameOfBuilding);
 	}
 }
