@@ -1,23 +1,41 @@
 package com.javaweb.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.javaweb.beans.BuildingDTO;
 
 @RestController
 //@controller help program understand this is a RESTFUL API WEB SERVICE
 
 public class BuildingAPI {
-//	@RequestMapping(value = "/api/building/", method = RequestMethod.GET)
+	@GetMapping(value = "/api/building/")
 	// add parameter required=false. The default of this parameter is true.
 	// it means any variable in request param must has value
 	// when set it is false, it don't need required any variable in request
 	// must has value, so it can null
-//	public void getBuilding(@RequestParam(value = "name", required = false) String name,
-//			@RequestParam(value = "size", required = false) String size,
-//			@RequestParam(value = "floor", required = false) Integer floor) {
-//		System.out.println(name + " " + size + " " + floor);
-//	}
+	public List<BuildingDTO> getBuilding(@RequestParam(value = "name", required = false) String name,
+			@RequestParam(value = "size", required = false) String size,
+			@RequestParam(value = "floor", required = false) Integer floor) {
+		List<BuildingDTO> listBuildings = new ArrayList<>();
+		BuildingDTO buildingDTO1 = new BuildingDTO();
+		buildingDTO1.setName("vinhome");
+		buildingDTO1.setFloor(10);
+		buildingDTO1.setSize("large");
+		BuildingDTO buildingDTO2 = new BuildingDTO();
+		buildingDTO2.setName("ocean");
+		buildingDTO2.setFloor(20);
+		buildingDTO2.setSize("small");
+		listBuildings.add(buildingDTO1);
+		listBuildings.add(buildingDTO2);
+		return listBuildings;
+	}
 
 	// get data by Map (1 way of RequestParam)
 //	@RequestMapping(value = "/api/building/", method = RequestMethod.GET)
