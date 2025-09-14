@@ -1,9 +1,17 @@
-package com.javaweb.beans;
+/**
+ * 
+ */
+package com.javaweb.repository.entity;
 
-public class BuildingDTO {
+/**
+ * 
+ */
+public class BuildingEntity {
 	private String name;
 	private String size;
 	private int floor;
+	private String street;
+	private String city;
 
 	/**
 	 * @return the name
@@ -47,4 +55,31 @@ public class BuildingDTO {
 		this.floor = floor;
 	}
 
+	/**
+	 * @return the street
+	 */
+	public String getStreet() {
+		return street;
+	}
+
+	/**
+	 * @param street the street to set
+	 */
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	/**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
 }
