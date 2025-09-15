@@ -3,7 +3,9 @@ package com.javaweb.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javaweb.model.BuildingDTO;
@@ -22,4 +24,9 @@ public class BuildingAPI {
 		return listBudiBuildingDTOs;
 	}
 
+	// function delete building by id
+	@DeleteMapping(value = "/delete-building/")
+	public void deleteBuilding(@RequestParam(value = "id") int id) {
+		buildingService.deleteById(id);
+	}
 }
