@@ -26,7 +26,7 @@ public class BuildingAPI {
 
 	// function delete building by id
 	@DeleteMapping(value = "/delete-building/")
-	public void deleteBuilding(@RequestParam(value = "id") int id) {
+	public void deleteBuilding(@RequestParam(value = "id") Integer id) {
 		buildingService.deleteById(id);
 	}
 }
