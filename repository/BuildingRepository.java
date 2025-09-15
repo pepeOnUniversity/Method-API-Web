@@ -12,4 +12,9 @@ import com.javaweb.repository.entity.BuildingEntity;
  */
 public interface BuildingRepository {
 	List<BuildingEntity> findAll();
+
+	/**
+	 * @param id
+	 */
+	void delete(int id);
 }
