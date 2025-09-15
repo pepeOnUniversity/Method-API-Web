@@ -44,4 +44,9 @@ public class BuildingServiceImpl implements BuildingService {
 		return listBuildingDTOs;
 	}
 
+	@Override
+	public void deleteById(int id) {
+		buildingRepository.delete(id);
+	}
+
 }
