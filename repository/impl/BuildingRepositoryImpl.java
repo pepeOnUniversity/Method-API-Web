@@ -58,4 +58,24 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 		return listBulBuildingEntities;
 	}
 
+	@Override
+	public void delete(int id) {
+		String sql = "delete from building where id = " + id;
+		try (Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+				Statement statement = connection.createStatement()) {
+
+			int rowsAffected = statement.executeUpdate(sql);
+
+			if (rowsAffected > 0) {
+				System.out.println("Xóa thành công building có ID: " + id);
+			} else {
+				System.out.println("Không tìm thấy building có ID: " + id);
+			}
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+
 }
